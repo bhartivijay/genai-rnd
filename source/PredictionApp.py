@@ -18,7 +18,7 @@ def answerTheQuestion(question):
   response = llm_chain.run(question)
   return response
 
-st.header("My prediction app")
-text_input = st.text_input("Enter some text")
+st.header("Prediction app")
+text_input = st.text_input("Enter Question:")
 value=answerTheQuestion(text_input)
 st.write(value)
