@@ -1,10 +1,12 @@
 from langchain_community.llms import GooglePalm
+from langchain_google_genai import GoogleGenerativeAI
 from langchain import PromptTemplate, LLMChain
 import streamlit as st
 
 key = 'AIzaSyBGHrM4SXVLJlIi7Xb8bNZGX18VxEexvU8'
 
-llm = GooglePalm(google_api_key=key, temperature=0.2)
+llm = GoogleGenerativeAI(model="models/text-bison-001",google_api_key=key, temperature=0.2)
+#llm = GooglePalm(google_api_key=key, temperature=0.2)
 def give_answer(question):
   template = """question: {question}
   Answer: let me think step by step"""
