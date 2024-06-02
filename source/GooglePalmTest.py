@@ -13,10 +13,10 @@ def give_answer(question):
   response = llm_chain.run(question)
   return response
 
-hide_github_icon =''' 
-#st-emotion-cache-ch5dnh {
+hide_github_icon ="""
+#.st-emotion-cache-1wbqy5l {
   visibility: hidden;
-}'''
+}"""
 
 
 st.markdown(hide_github_icon, unsafe_allow_html=True)
