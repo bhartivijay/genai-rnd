@@ -14,7 +14,7 @@ def give_answer(question):
   return response
 
 hide_github_icon = """
-#MainMenu {
+#stActionButton {
   visibility: hidden;
 }
 """
