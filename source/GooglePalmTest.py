@@ -27,6 +27,7 @@ visibility: hidden;
 
 st.markdown(hide_github_icon, unsafe_allow_html=True)
 st.header("Ask me a question and I will answer")
+st.markdown('Developed by vijay')
 text_input = st.text_input("Enter Question:")
 value = give_answer(text_input)
 st.write(value)
