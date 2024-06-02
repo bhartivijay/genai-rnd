@@ -20,7 +20,7 @@ header{
 }
 </style>
 <style>
-manage-app-button{
+#manage-app-button{
 visibility: hidden;
 }
 </style>
