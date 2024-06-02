@@ -20,10 +20,11 @@ def give_answer(text_input):
     return response
 
 hide_github_icon = """
-#GithubIcon {
+#MainMenu {
   visibility: hidden;
 }
 """
+
 st.markdown(hide_github_icon, unsafe_allow_html=True)
 st.header("You can talk to you database")
 text_input = st.text_input("Enter Question:")
