@@ -15,7 +15,7 @@ def give_answer(question):
 
 hide_github_icon ="""
 <style>
-header manage-app-button {
+header, manage-app-button {
   visibility: hidden;
 }
 </style>
