@@ -14,8 +14,10 @@ def give_answer(question):
   return response
 
 hide_github_icon ="""
-#.st-emotion-cache-1wbqy5l {
+<style>
+#st-emotion-cache-1wbqy5l {
   visibility: hidden;
+</style>
 }"""
 
 
