@@ -13,11 +13,11 @@ def give_answer(question):
   response = llm_chain.run(question)
   return response
 
-hide_github_icon = """
+hide_github_icon =''' 
 #st-emotion-cache-ch5dnh {
   visibility: hidden;
-}
-"""
+}'''
+
 
 st.markdown(hide_github_icon, unsafe_allow_html=True)
 st.header("Ask me a question and I will answer")
