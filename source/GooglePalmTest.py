@@ -17,8 +17,8 @@ hide_github_icon ="""
 <style>
 header{
   visibility: hidden;
-},
-button.manage-app-button{
+}
+button{
 visibility: hidden;
 }
 </style>
