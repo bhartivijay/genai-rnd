@@ -3,3 +3,4 @@ huggingface_hub
 streamlit
 langchain_community
 google-generativeai
+langchain-google-genai
