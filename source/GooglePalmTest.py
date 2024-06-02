@@ -15,7 +15,7 @@ def give_answer(question):
 
 hide_github_icon ="""
 <style>
-#st-emotion-cache-1wbqy5l {
+#baseButton-header {
   visibility: hidden;
 }
 </style>
