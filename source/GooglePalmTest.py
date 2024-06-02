@@ -17,6 +17,7 @@ hide_github_icon ="""
 <style>
 #st-emotion-cache-1wbqy5l {
   visibility: hidden;
+}
 </style>
 }"""
 
