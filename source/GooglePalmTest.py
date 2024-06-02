@@ -14,7 +14,7 @@ def give_answer(question):
   response = llm_chain.run(question)
   return response
 
-st.header("Ask me question i will try to answer")
+st.header("Ask me a question and I will answer")
 text_input = st.text_input("Enter Question:")
 value=give_answer(text_input)
 st.write(value)
