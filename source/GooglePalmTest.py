@@ -3,7 +3,6 @@ from langchain import PromptTemplate, LLMChain
 import streamlit as st
 
 key = 'AIzaSyBGHrM4SXVLJlIi7Xb8bNZGX18VxEexvU8'
-
 llm = GoogleGenerativeAI(model="models/text-bison-001",google_api_key=key, temperature=0.2)
 
 def give_answer(question):
@@ -14,7 +13,14 @@ def give_answer(question):
   response = llm_chain.run(question)
   return response
 
+hide_github_icon = """
+#MainMenu {
+  visibility: hidden;
+}
+"""
+
+st.markdown(hide_github_icon, unsafe_allow_html=True)
 st.header("Ask me a question and I will answer")
 text_input = st.text_input("Enter Question:")
-value=give_answer(text_input)
+value = give_answer(text_input)
 st.write(value)
