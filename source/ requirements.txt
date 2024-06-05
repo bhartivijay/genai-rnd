@@ -2,5 +2,7 @@ langchain
 huggingface_hub
 streamlit
 langchain_community
+langchain-google-genai
 google-generativeai
 langchain-google-genai
+unstructured
