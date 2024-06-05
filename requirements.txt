@@ -4,3 +4,4 @@ streamlit
 langchain_community
 google-generativeai
 langchain-google-genai
+unstructured
