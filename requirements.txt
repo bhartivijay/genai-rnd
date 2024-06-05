@@ -5,3 +5,4 @@ langchain_community
 google-generativeai
 langchain-google-genai
 unstructured
+unstructured==0.14.3
