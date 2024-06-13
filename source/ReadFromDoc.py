@@ -49,22 +49,20 @@ def getConversastonalChain(vectorstore):
 
 def handleUserInput(user_question):
     convers_chain = st.session_state.conversation
-    print('Conversation chain############')
-    #print(convers_chain)
     response=convers_chain.invoke(user_question)
     st.write(response['answer'])
 
 
-st.set_page_config("Chat with Multiple PDFs", page_icon=":books:")
-st.header("Chat with multiple PDFs :books:")
+st.set_page_config("Chat With Multiple PDFs", page_icon=":books:")
+st.header("SwiftHR :books:")
+st.markdown('Developed by Vijay Bharti')
 st.markdown(hide_github_icon,unsafe_allow_html=True)
 user_input = st.text_input("Ask a question from your document")
-print(user_input)
+
 with st.sidebar:
-    st.header("Chat with PDF")
-    st.subheader("Your Document")
+    st.header("Upload Your PDF Document/s")
+
     pdfs = st.file_uploader("Upload pdf files and click process", accept_multiple_files=True, type="pdf")
-    # st.button("Process")
     if st.button("Process"):
         with st.spinner("Process"):
             raw_text = readPdfText(pdfs)
@@ -73,5 +71,9 @@ with st.sidebar:
             st.session_state.conversation = getConversastonalChain(vectorstore)
             st.success("Done")
 if st.button("Get Answer"):
-    handleUserInput(user_input)
+
+    if "conversation" not in st.session_state:
+        st.warning('Please upload PDF/s to start asking questions')
+    else:
+        handleUserInput(user_input)
 
