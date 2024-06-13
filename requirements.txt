@@ -9,4 +9,4 @@ PyPDF2
 unstructured==0.14.3
 unstructured-client==0.22.0
 sentence-transformers
-faiss-gpu
+faiss-gpu --force-reinstall
