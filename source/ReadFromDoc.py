@@ -30,36 +30,6 @@ def readPdfText(pdf_docs):
     return text
 
 
-def main():
-
-    st.set_page_config("Chat with Multiple PDFs", page_icon=":books:")
-    st.header("Chat with multiple PDFs :books:")
-    #st.markdown(hide_github_icon,unsafe_allow_html=True)
-    user_input = st.text_input("Ask a question from your document")
-
-
-
-    with st.sidebar:
-        st.header("Chat with PDF")
-        st.subheader("Your Document")
-        pdfs=st.file_uploader("Upload pdf files and click process", accept_multiple_files=True,type="pdf")
-        #st.button("Process")
-        if st.button("Process"):
-            with st.spinner("Process"):
-                raw_text=readPdfText(pdfs)
-                chunks=get_text_chunks(raw_text)
-                vectorstore=get_vector_store(chunks)
-                #conversession_chain=getConversastonalChain(vectorstore)
-                st.session_state.conversation = getConversastonalChain(vectorstore)
-                st.success("Done")
-    if st.button("Get Answer"):
-        print("my question is")
-        print(user_input)
-        handleUserInput(user_input)
-
-
-
-
 def get_text_chunks(text):
     text_splitter=CharacterTextSplitter(separator="\n", chunk_size=1000, chunk_overlap=200)
     chunks=text_splitter.split_text(text)
@@ -72,21 +42,36 @@ def get_vector_store(text_chunks):
 
 def getConversastonalChain(vectorstore):
     llm = GoogleGenerativeAI(model="models/text-bison-001", google_api_key=key, temperature=0.2)
-    #memory=ConversationBufferMemory(memory_key)
-    conversastional_chain=ConversationalRetrievalChain.from_llm(llm=llm,retriever=vectorstore.as_retriever(search_kwargs={"k": 1}),memory=ConversationBufferMemory(memory_key="chat_history",return_message=False,verbose=True,output_key='answer'))
+    memory=ConversationBufferMemory(memory_key="chat_history", return_message=False, return_docs=False, verbose=True, output_key='answer')
+    conversastional_chain = ConversationalRetrievalChain.from_llm(llm=llm, retriever=vectorstore.as_retriever(), memory=memory,return_source_documents=True, get_chat_history=lambda h: h)
     return conversastional_chain
 
 
 def handleUserInput(user_question):
     convers_chain = st.session_state.conversation
     print('Conversation chain############')
-    print(convers_chain)
-    response=convers_chain.run(user_question)
-    st.write(response)
+    #print(convers_chain)
+    response=convers_chain.invoke(user_question)
+    st.write(response['answer'])
 
 
+st.set_page_config("Chat with Multiple PDFs", page_icon=":books:")
+st.header("Chat with multiple PDFs :books:")
+# st.markdown(hide_github_icon,unsafe_allow_html=True)
+user_input = st.text_input("Ask a question from your document")
+print(user_input)
+with st.sidebar:
+    st.header("Chat with PDF")
+    st.subheader("Your Document")
+    pdfs = st.file_uploader("Upload pdf files and click process", accept_multiple_files=True, type="pdf")
+    # st.button("Process")
+    if st.button("Process"):
+        with st.spinner("Process"):
+            raw_text = readPdfText(pdfs)
+            chunks = get_text_chunks(raw_text)
+            vectorstore = get_vector_store(chunks)
+            st.session_state.conversation = getConversastonalChain(vectorstore)
+            st.success("Done")
+if st.button("Get Answer"):
+    handleUserInput(user_input)
 
-
-
-if __name__== "__main__":
-    main()
