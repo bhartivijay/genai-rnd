@@ -6,4 +6,5 @@ langchain_community
 google-generativeai
 langchain-google-genai
 PyPDF2
-sentence-transfer
+unstructured==0.14.3
+unstructured-client==0.22.0
