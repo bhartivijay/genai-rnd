@@ -57,7 +57,7 @@ def handleUserInput(user_question):
 
 st.set_page_config("Chat with Multiple PDFs", page_icon=":books:")
 st.header("Chat with multiple PDFs :books:")
-# st.markdown(hide_github_icon,unsafe_allow_html=True)
+st.markdown(hide_github_icon,unsafe_allow_html=True)
 user_input = st.text_input("Ask a question from your document")
 print(user_input)
 with st.sidebar:
