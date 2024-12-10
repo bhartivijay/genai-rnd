@@ -2,15 +2,19 @@ import spacy
 import nltk
 from nltk.tokenize import sent_tokenize
 from collections import defaultdict
+import subprocess
 import streamlit as st
-st.header("Meeting Notes Processor")
 
+st.header("Meeting Notes Processor")
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
 nltk.download('punkt_tab')
 nlp = spacy.load("en_core_web_sm")
 
+@st.cache_resource
+def download_en_core_web_sm():
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
 def categorize_insight(sentence):
     """
     Categorize a sentence as actionable or non-actionable.
@@ -68,9 +72,9 @@ st.write("\n----Actionable Insights ----")
 for insight in insights["Actionable"]:
     st.write(f"- {insight}")
 
-print("\n----Non-Actionable Insights ----")
+st.write("\n----Non-Actionable Insights ----")
 for insight in insights["Non-Actionable"]:
-    print(f"- {insight}")
+    st.write(f"- {insight}")
 
 st.write("\n----Uncategorized Insights ----")
 for insight in insights["Uncategorized"]:
