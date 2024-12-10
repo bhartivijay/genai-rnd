@@ -15,4 +15,4 @@ pyttsx3
 speechrecognition
 unstructured[pdf]
 spacy
-python -m spacy download en_core_web_sm
+
