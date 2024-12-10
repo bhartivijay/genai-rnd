@@ -15,6 +15,7 @@ nlp = spacy.load("en_core_web_sm")
 @st.cache_resource
 def download_en_core_web_sm():
     subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+
 def categorize_insight(sentence):
     """
     Categorize a sentence as actionable or non-actionable.
@@ -60,6 +61,8 @@ def derive_insights(meeting_notes):
         entities.append(extract_entities(doc))
 
     return insights, entities
+
+download_en_core_web_sm()
 
 metting_notes = """
 Client ABC emphasized the importance of delivering the project by next month.
