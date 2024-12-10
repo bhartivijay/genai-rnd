@@ -2,6 +2,8 @@ import spacy
 import nltk
 from nltk.tokenize import sent_tokenize
 from collections import defaultdict
+import streamlit as st
+st.header("Meeting Notes Processor")
 
 nltk.download('punkt')
 nltk.download('wordnet')
@@ -61,19 +63,19 @@ Follow up with design team to finalize the UI mockups.
 
 insights, entities = derive_insights(metting_notes)
 
-print("\n----Actionable Insights ----")
+st.write("\n----Actionable Insights ----")
 for insight in insights["Actionable"]:
-    print(f"- {insight}")
+    st.write(f"- {insight}")
 
 print("\n----Non-Actionable Insights ----")
 for insight in insights["Non-Actionable"]:
     print(f"- {insight}")
 
-print("\n----Uncategorized Insights ----")
+st.write("\n----Uncategorized Insights ----")
 for insight in insights["Uncategorized"]:
-    print(f"- {insight}")
+    st.write(f"- {insight}")
 
-print("\n----Extracted Entities ----")
+st.write("\n----Extracted Entities ----")
 for entity_group in entities:
     for label, text in entity_group.items():
-        print(f"{label}: {', '.join(text)}")
+        st.write(f"{label}: {', '.join(text)}")
