@@ -10,3 +10,8 @@ unstructured==0.14.3
 unstructured-client==0.22.0
 sentence-transformers
 faiss-cpu
+pyaudio
+pyttsx3
+speechrecognition
+unstructured[pdf]
+spacy
