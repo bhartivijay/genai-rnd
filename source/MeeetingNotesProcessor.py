@@ -2,7 +2,7 @@ import spacy
 import nltk
 from nltk.tokenize import sent_tokenize
 from collections import defaultdict
-import subprocess
+
 import streamlit as st
 
 st.header("Meeting Notes Processor")
@@ -12,9 +12,7 @@ nltk.download('omw-1.4')
 nltk.download('punkt_tab')
 nlp = spacy.load("en_core_web_sm")
 
-@st.cache_resource
-def download_en_core_web_sm():
-    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+
 
 def categorize_insight(sentence):
     """
@@ -62,7 +60,7 @@ def derive_insights(meeting_notes):
 
     return insights, entities
 
-download_en_core_web_sm()
+
 
 metting_notes = """
 Client ABC emphasized the importance of delivering the project by next month.
