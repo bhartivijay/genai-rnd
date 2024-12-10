@@ -8,6 +8,7 @@ st.header("Meeting Notes Processor")
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
+nltk.download('punkt_tab')
 nlp = spacy.load("en_core_web_sm")
 
 def categorize_insight(sentence):
